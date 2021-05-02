@@ -1,0 +1,35 @@
+
+Question not 3
+
+Given a string, find the minimum number of characters to be inserted to convert it to palindrome. For Example: ab: Number of insertions required is 1. bab or aba aa: Number of insertions required is 0. aa abcd: Number of insertions required is 3. dcbabcd
+ Example 1:
+Input: str = "abcd"
+Output: 3
+Explanation: Inserted character marked
+with bold characters in dcbabcd
+Example 2:
+Input: str = "aa"
+Output: 0
+Explanation:"aa" is already a palindrome.
+ Your Task:   You don't need to read input or print anything. Your task is to complete the function countMin() which takes the string str as inputs and returns the answer.  Expected Time Complexity: O(N2), N = |str| Expected Auxiliary Space: O(N2)  Constraints: 1 ≤ |str| ≤ 103 str contains only lower case alphabets.
+
+Solution
+
+public int  countMin(char str[], int n)
+    {
+    
+        int ta[][] = new int[n][n];
+        int l, h, gap;
+ 
+        // Fill the table
+        for (gap = 1; gap < n; ++gap)
+        for (l = 0, h = gap; h < n; ++l, ++h)
+            ta[l][h] = (str[l] == str[h])?
+                           ta[l+1][h-1] :
+                          (Integer.min(ta[l][h-1],
+                                 ta[l+1][h]) + 1);
+ 
+        // Return minimum number of insertions
+        // for str[0..n-1]
+        return ta[0][n-1];
+    }
