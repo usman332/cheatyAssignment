@@ -40,7 +40,7 @@ Solution
     // The first activity always gets selected
     i = 0;
       
-    int counterOfActivites=0
+    int counterOfActivites=1
     // Consider rest of the activities
     for (j = 1; j < n; j++)
     {
